@@ -2,6 +2,7 @@ import { fetchSecurityConfig } from "../utils/sysConfig";
 import { purgeCFCache, purgeRandomFileListCache, purgePublicFileListCache } from "../utils/purgeCache";
 import { addFileToIndex } from "../utils/indexManager.js";
 import { getDatabase } from '../utils/databaseAdapter.js';
+import { recordContentHash } from '../utils/dedup/contentDedup.js';
 
 // 统一的响应创建函数
 export function createResponse(body, options = {}) {
@@ -396,6 +397,19 @@ export async function endUpload(context, fileId, metadata) {
 
     // 更新文件索引（索引更新时会自动计算容量统计）
     await addFileToIndex(context, fileId, metadata);
+
+    // 内容去重：上传成功后记录 hash → fileId 映射
+    // dedupHash 由 functions/_middleware.js 在放行前算好，通过 context.data 传递
+    // （Pages 会为每个 handler 新建 context，只有 context.data 是共享的）；
+    // 未启用去重、或文件超过上限时不会有这个字段，此处自然跳过。
+    const dedupHash = context.data?.dedupHash;
+    if (dedupHash) {
+        await recordContentHash(getDatabase(env), dedupHash, fileId, {
+            size: context.data?.dedupMeta?.size,
+            name: context.data?.dedupMeta?.name,
+            channel: metadata?.Channel,
+        });
+    }
 }
 
 // 从 request 中解析 ip 地址

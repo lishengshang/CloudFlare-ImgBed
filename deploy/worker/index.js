@@ -8,6 +8,7 @@
 // ==================== 自动生成的导入 ====================
 
 // --- 中间件（自动生成） ---
+import * as mw_root from '../../functions/_middleware.js';
 import * as mw_api from '../../functions/api/_middleware.js';
 import * as mw_api_manage from '../../functions/api/manage/_middleware.js';
 import * as mw_dav from '../../functions/dav/_middleware.js';
@@ -41,6 +42,7 @@ import * as apiAuthResetAuth from '../../functions/api/auth/resetAuth.js';
 import * as apiAuthSessionCheck from '../../functions/api/auth/sessionCheck.js';
 import * as apiBingWallpaper_index from '../../functions/api/bing/wallpaper/index.js';
 import * as apiManageApiTokens from '../../functions/api/manage/apiTokens.js';
+import * as apiManageDedupConfig from '../../functions/api/manage/dedupConfig.js';
 import * as apiManageList from '../../functions/api/manage/list.js';
 import * as apiManageQuota from '../../functions/api/manage/quota.js';
 import * as apiPublicList from '../../functions/api/public/list.js';
@@ -67,52 +69,53 @@ import * as fileCatchAll from '../../functions/file/[[path]].js';
 // ==================== 自动生成的路由表 ====================
 
 const routes = [
-    { path: '/api/manage/batch/index/chunk', module: apiManageBatchIndexChunk, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/batch/index/config', module: apiManageBatchIndexConfig, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/batch/index/finalize', module: apiManageBatchIndexFinalize, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/batch/restore/chunk', module: apiManageBatchRestoreChunk, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/batch/list', module: apiManageBatchList, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/batch/settings', module: apiManageBatchSettings, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/cusConfig/blockip', module: apiManageCusConfigBlockip, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/cusConfig/blockipList', module: apiManageCusConfigBlockipList, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/cusConfig/files', module: apiManageCusConfigFiles, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/cusConfig/list', module: apiManageCusConfigList, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/cusConfig/whiteip', module: apiManageCusConfigWhiteip, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/delete/batch', module: apiManageDeleteBatch, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/sysConfig/others', module: apiManageSysConfigOthers, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/sysConfig/page', module: apiManageSysConfigPage, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/sysConfig/security', module: apiManageSysConfigSecurity, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/sysConfig/upload', module: apiManageSysConfigUpload, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/tags/autocomplete', module: apiManageTagsAutocomplete, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/tags/batch', module: apiManageTagsBatch, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/auth/adminLogin', module: apiAuthAdminLogin, middlewares: [mw_api] },
-    { path: '/api/auth/login', module: apiAuthLogin, middlewares: [mw_api] },
-    { path: '/api/auth/logout', module: apiAuthLogout, middlewares: [mw_api] },
-    { path: '/api/auth/resetAuth', module: apiAuthResetAuth, middlewares: [mw_api] },
-    { path: '/api/auth/sessionCheck', module: apiAuthSessionCheck, middlewares: [mw_api] },
-    { path: '/api/bing/wallpaper', module: apiBingWallpaper_index, middlewares: [mw_api] },
-    { path: '/api/manage/apiTokens', module: apiManageApiTokens, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/list', module: apiManageList, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/manage/quota', module: apiManageQuota, middlewares: [mw_api, mw_api_manage] },
-    { path: '/api/public/list', module: apiPublicList, middlewares: [mw_api] },
-    { path: '/upload/huggingface/commitUpload', module: uploadHuggingfaceCommitUpload, middlewares: [mw_upload] },
-    { path: '/upload/huggingface/completeMultipart', module: uploadHuggingfaceCompleteMultipart, middlewares: [mw_upload] },
-    { path: '/upload/huggingface/getUploadUrl', module: uploadHuggingfaceGetUploadUrl, middlewares: [mw_upload] },
-    { path: '/api/channels', module: apiChannels, middlewares: [mw_api] },
-    { path: '/api/directoryTree', module: apiDirectoryTree, middlewares: [mw_api] },
-    { path: '/api/fetchRes', module: apiFetchRes, middlewares: [mw_api] },
-    { path: '/api/userConfig', module: apiUserConfig, middlewares: [mw_api] },
-    { path: '/random', module: random_index, middlewares: [mw_random] },
-    { path: '/upload', module: upload_index, middlewares: [mw_upload] },
-    { path: '/api/manage/block/', module: apiManageBlockCatchAll, middlewares: [mw_api, mw_api_manage], catchAll: true },
-    { path: '/api/manage/delete/', module: apiManageDeleteCatchAll, middlewares: [mw_api, mw_api_manage], catchAll: true },
-    { path: '/api/manage/metadata/', module: apiManageMetadataCatchAll, middlewares: [mw_api, mw_api_manage], catchAll: true },
-    { path: '/api/manage/move/', module: apiManageMoveCatchAll, middlewares: [mw_api, mw_api_manage], catchAll: true },
-    { path: '/api/manage/rename/', module: apiManageRenameCatchAll, middlewares: [mw_api, mw_api_manage], catchAll: true },
-    { path: '/api/manage/tags/', module: apiManageTagsCatchAll, middlewares: [mw_api, mw_api_manage], catchAll: true },
-    { path: '/api/manage/white/', module: apiManageWhiteCatchAll, middlewares: [mw_api, mw_api_manage], catchAll: true },
-    { path: '/dav/', module: davCatchAll, middlewares: [mw_dav], catchAll: true },
-    { path: '/file/', module: fileCatchAll, middlewares: [mw_file], catchAll: true },
+    { path: '/api/manage/batch/index/chunk', module: apiManageBatchIndexChunk, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/batch/index/config', module: apiManageBatchIndexConfig, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/batch/index/finalize', module: apiManageBatchIndexFinalize, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/batch/restore/chunk', module: apiManageBatchRestoreChunk, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/batch/list', module: apiManageBatchList, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/batch/settings', module: apiManageBatchSettings, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/cusConfig/blockip', module: apiManageCusConfigBlockip, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/cusConfig/blockipList', module: apiManageCusConfigBlockipList, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/cusConfig/files', module: apiManageCusConfigFiles, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/cusConfig/list', module: apiManageCusConfigList, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/cusConfig/whiteip', module: apiManageCusConfigWhiteip, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/delete/batch', module: apiManageDeleteBatch, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/sysConfig/others', module: apiManageSysConfigOthers, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/sysConfig/page', module: apiManageSysConfigPage, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/sysConfig/security', module: apiManageSysConfigSecurity, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/sysConfig/upload', module: apiManageSysConfigUpload, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/tags/autocomplete', module: apiManageTagsAutocomplete, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/tags/batch', module: apiManageTagsBatch, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/auth/adminLogin', module: apiAuthAdminLogin, middlewares: [mw_root, mw_api] },
+    { path: '/api/auth/login', module: apiAuthLogin, middlewares: [mw_root, mw_api] },
+    { path: '/api/auth/logout', module: apiAuthLogout, middlewares: [mw_root, mw_api] },
+    { path: '/api/auth/resetAuth', module: apiAuthResetAuth, middlewares: [mw_root, mw_api] },
+    { path: '/api/auth/sessionCheck', module: apiAuthSessionCheck, middlewares: [mw_root, mw_api] },
+    { path: '/api/bing/wallpaper', module: apiBingWallpaper_index, middlewares: [mw_root, mw_api] },
+    { path: '/api/manage/apiTokens', module: apiManageApiTokens, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/dedupConfig', module: apiManageDedupConfig, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/list', module: apiManageList, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/manage/quota', module: apiManageQuota, middlewares: [mw_root, mw_api, mw_api_manage] },
+    { path: '/api/public/list', module: apiPublicList, middlewares: [mw_root, mw_api] },
+    { path: '/upload/huggingface/commitUpload', module: uploadHuggingfaceCommitUpload, middlewares: [mw_root, mw_upload] },
+    { path: '/upload/huggingface/completeMultipart', module: uploadHuggingfaceCompleteMultipart, middlewares: [mw_root, mw_upload] },
+    { path: '/upload/huggingface/getUploadUrl', module: uploadHuggingfaceGetUploadUrl, middlewares: [mw_root, mw_upload] },
+    { path: '/api/channels', module: apiChannels, middlewares: [mw_root, mw_api] },
+    { path: '/api/directoryTree', module: apiDirectoryTree, middlewares: [mw_root, mw_api] },
+    { path: '/api/fetchRes', module: apiFetchRes, middlewares: [mw_root, mw_api] },
+    { path: '/api/userConfig', module: apiUserConfig, middlewares: [mw_root, mw_api] },
+    { path: '/random', module: random_index, middlewares: [mw_root, mw_random] },
+    { path: '/upload', module: upload_index, middlewares: [mw_root, mw_upload] },
+    { path: '/api/manage/block/', module: apiManageBlockCatchAll, middlewares: [mw_root, mw_api, mw_api_manage], catchAll: true },
+    { path: '/api/manage/delete/', module: apiManageDeleteCatchAll, middlewares: [mw_root, mw_api, mw_api_manage], catchAll: true },
+    { path: '/api/manage/metadata/', module: apiManageMetadataCatchAll, middlewares: [mw_root, mw_api, mw_api_manage], catchAll: true },
+    { path: '/api/manage/move/', module: apiManageMoveCatchAll, middlewares: [mw_root, mw_api, mw_api_manage], catchAll: true },
+    { path: '/api/manage/rename/', module: apiManageRenameCatchAll, middlewares: [mw_root, mw_api, mw_api_manage], catchAll: true },
+    { path: '/api/manage/tags/', module: apiManageTagsCatchAll, middlewares: [mw_root, mw_api, mw_api_manage], catchAll: true },
+    { path: '/api/manage/white/', module: apiManageWhiteCatchAll, middlewares: [mw_root, mw_api, mw_api_manage], catchAll: true },
+    { path: '/dav/', module: davCatchAll, middlewares: [mw_root, mw_dav], catchAll: true },
+    { path: '/file/', module: fileCatchAll, middlewares: [mw_root, mw_file], catchAll: true },
 ];
 
 
